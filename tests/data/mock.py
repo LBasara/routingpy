@@ -589,7 +589,7 @@ ENDPOINTS_RESPONSES = {
             "json": {
                 "routes": [
                     {
-                        "summary": {"distance": 850.5, "duration": 191.4},
+                        "summary": {"distance": 2439, "duration": 100},
                         "geometry": "ihrlHir~s@cFFcAKeB_@_B]g@IUAQB]PaCr@y@cJeBXe@qJ_@kH??",
                     }
                 ]
@@ -672,7 +672,7 @@ ENDPOINTS_RESPONSES = {
         },
         "matrix": {
             "durations": [[7900.34], [0], [136841.92], [483295.5]],
-            "distances": [[125414.58], [0], [2383943.25], [10037064]],
+            "distances": [[125.58], [0], [238.25], [100]],
         },
     },
     "graphhopper": {
@@ -1148,7 +1148,6 @@ ENDPOINTS_QUERIES = {
             "locations": PARAM_LINE,
             "profile": "driving-car",
             "preference": "fastest",
-            "units": "mi",
             "language": "en",
             "geometry": "true",
             "geometry_simplify": "False",
@@ -1167,7 +1166,6 @@ ENDPOINTS_QUERIES = {
             "profile": "cycling-regular",
             "interval_type": "distance",
             "intervals": [PARAM_INT_BIG],
-            "units": "m",
             "location_type": "destination",
             "attributes": ["area", "reachfactor"],
         },
@@ -1178,7 +1176,6 @@ ENDPOINTS_QUERIES = {
             "profile": "driving-car",
             "metrics": ["duration", "distance"],
             "resolve_locations": "true",
-            "units": "mi",
         },
     },
 }
