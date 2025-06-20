@@ -76,6 +76,8 @@ class Matrix(object):
                 ...
             ]
 
+        The distances are in meters.
+
         :rtype: list or None
         """
         return self._distances
