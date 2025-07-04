@@ -47,7 +47,10 @@ or **time-distance matrices**.
 This list is hopefully growing with time and contributions by other developers. An up-to-date list is always available
 in our documentation_.
 
-**routingpy** is tested against CPython versions 3.9, 3.10, 3.11, 3.12 and 3.13. PyPy3 is currently not supported, see `#60 <https://github.com/mthh/routingpy/issues/60>`_.
+**routingpy** is tested against:
+
+- CPython versions 3.9, 3.10, 3.11, 3.12 and 3.13,
+- PyPy3 versions 3.9 and 3.10.
 
 © routingpy contributors 2022 under the `Apache 2.0 License`_.
 
