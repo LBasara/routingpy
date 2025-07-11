@@ -315,4 +315,4 @@ All these parameters, and more, can optionally be **globally set** for all route
 .. _routing-py.routers: https://routingpy.readthedocs.io/en/latest/#module-routingpy.routers
 .. _Apache 2.0 License: https://github.com/mthh/routingpy/blob/master/LICENSE
 .. _mybinder.org: https://mybinder.org/v2/gh/mthh/routingpy/master?filepath=examples
-.. _poetry: https://github.com/sdispater/poetry
+.. _poetry: https://github.com/python-poetry/poetry
