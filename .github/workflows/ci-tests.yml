@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python_version: [
@@ -44,19 +44,23 @@ jobs:
         path: ~/.cache/pre-commit
         key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
 
+    - name: Install Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        poetry --version
+
     - name: Install dependencies
       run: |
-        pip install -r requirements_dev.txt
+        poetry install --with dev
 
-    - name: style & lint checks
+    - name: Style & lint checks
       run: |
-        pre-commit run --all-files --color=always
+        poetry run pre-commit run --all-files --color=always
 
     - name: pytest and coverage
       run: |
-        pip install -e .
-        coverage run --source=routingpy --module pytest
-        coverage lcov --include "routingpy/*"
+        poetry run coverage run --source=routingpy --module pytest
+        poetry run coverage lcov --include "routingpy/*"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -69,7 +73,7 @@ jobs:
 
   coveralls:
     needs: build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Download coverage artifact
