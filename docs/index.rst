@@ -2,10 +2,10 @@ Welcome to routingpy's documentation!
 =====================================
 
 :Documentation: https://routingpy.readthedocs.io/
-:Source Code: https://github.com/gis-ops/routing-py
-:Issue Tracker: https://github.com/gis-ops/routing-py/issues
+:Source Code: https://github.com/mthh/routingpy
+:Issue Tracker: https://github.com/mthh/routingpy/issues
 :PyPI: https://pypi.org/project/routingpy
-:MyBinder Interactive Examples: https://mybinder.org/v2/gh/gis-ops/routing-py/master?filepath=examples
+:MyBinder Interactive Examples: https://mybinder.org/v2/gh/mthh/routingpy/master?filepath=examples
 
 .. automodule:: routingpy
    :members: __doc__
@@ -169,7 +169,7 @@ Changelog
 
 See our `Changelog.md`_.
 
-.. _Changelog.md: https://github.com/gis-ops/routingpy/CHANGELOG.md
+.. _Changelog.md: https://github.com/mthh/routingpy/CHANGELOG.md
 
 Indices and search
 ==================

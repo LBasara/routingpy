@@ -22,7 +22,7 @@ eventually be able to cover all remote open source routing API's, but have to re
 
 - Please only submit actual technical issues and use [Stack Overflow](stackoverflow.com/) for questions using the tag `routingpy`.
 
-- Please make sure you don't submit a duplicate by browsing open and closed issues first and consult the [CHANGELOG](https://github.com/gis-ops/routingpy/blob/master/CHANGELOG.md) for already fixed issues
+- Please make sure you don't submit a duplicate by browsing open and closed issues first and consult the [CHANGELOG](https://github.com/mthh/routingpy/blob/master/CHANGELOG.md) for already fixed issues
 
 ## Pull requests
 
@@ -34,7 +34,7 @@ We use the PSF's [`black`](https://github.com/psf/black) to make sure the code s
 
 When contributing, we expect you to:
 
-- close an existing issue. If there is none yet for your fix, please [create one](https://github.com/gis-ops/routingpy/issues/new).
+- close an existing issue. If there is none yet for your fix, please [create one](https://github.com/mthh/routingpy/issues/new).
 - write/adapt unit tests and/or mock API tests, depending on the introduced or fixed functionality
 - limit the number of commits to a minimum, i.e. responsible use of [`git commit --amend [--no-edit]`](https://www.atlassian.com/git/tutorials/rewriting-history#git-commit--amend)
 - use meaningful commit messages (and ideally follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
