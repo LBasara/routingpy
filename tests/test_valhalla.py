@@ -23,10 +23,11 @@ import responses
 
 import tests as _test
 from routingpy import Valhalla
-from routingpy.direction import Direction
+from routingpy.direction import Direction, Directions
 from routingpy.expansion import Expansions
 from routingpy.isochrone import Isochrone, Isochrones
 from routingpy.matrix import Matrix
+from routingpy.raster import Raster
 from routingpy.valhalla_attributes import (
     MatchedEdge,
     MatchedPoint,
@@ -67,6 +68,38 @@ class ValhallaTest(_test.TestCase):
         self.assertEqual(routes.duration, 57)
         self.assertIsInstance(routes.geometry, list)
         self.assertIsInstance(routes.raw, dict)
+
+    @responses.activate
+    def test_directions_alternatives(self):
+        query = deepcopy(ENDPOINTS_QUERIES[self.name]["alternatives"])
+        expected = deepcopy(ENDPOINTS_EXPECTED[self.name]["alternatives"])
+
+        responses.add(
+            responses.POST,
+            "https://api.mapbox.com/valhalla/v1/route",
+            status=200,
+            json=ENDPOINTS_RESPONSES[self.name]["alternatives"],
+            content_type="application/json",
+        )
+
+        routes = self.client.directions(**query)
+
+        self.assertEqual(1, len(responses.calls))
+        self.assertEqual(json.loads(responses.calls[0].request.body.decode("utf-8")), expected)
+
+        # Since we requested alternatives, we should get a Directions object
+        self.assertIsInstance(routes, Directions)
+
+        # We should have 1 route + 1 alternative = 2 routes
+        self.assertEqual(len(routes), 2)
+
+        # Check we have stored both routes correctly
+        route1 = routes[0]
+        route2 = routes[1]
+        self.assertIsInstance(route1, Direction)
+        self.assertIsInstance(route2, Direction)
+        self.assertEqual(route1.distance, int(46.176 * 1000))
+        self.assertEqual(route2.distance, int(54.324 * 1000))
 
     @responses.activate
     def test_waypoint_generator(self):
@@ -150,6 +183,24 @@ class ValhallaTest(_test.TestCase):
         for i in iso:
             self.assertIsInstance(i, Isochrone)
             self.assertEqual(i.interval_type, "distance")
+
+    @responses.activate
+    def test_raster(self):
+        query = deepcopy(ENDPOINTS_QUERIES[self.name]["isochrones"])
+        query["format"] = "geotiff"
+        with open("tests/raster_valhalla.tif", "rb") as raster_file:
+            image = raster_file.read()
+            responses.add(
+                responses.POST,
+                "https://api.mapbox.com/valhalla/v1/isochrone",
+                status=200,
+                body=image,
+                content_type="image/tiff",
+            )
+            raster = self.client.raster(**query)
+            self.assertIsInstance(raster, Raster)
+            self.assertEqual(raster.image, image)
+            self.assertEqual(raster.max_travel_time, max(query["intervals"]))
 
     # TODO: test colors having less items than range
     @responses.activate
