@@ -19,6 +19,7 @@ from ..exceptions import RouterNotFound
 from .google import Google
 from .graphhopper import Graphhopper
 from .heremaps import HereMaps
+from .ign import IGN
 from .mapbox_osrm import MapboxOSRM
 from .openrouteservice import ORS
 from .opentripplanner_v2 import OpenTripPlannerV2
@@ -31,6 +32,7 @@ _SERVICE_TO_ROUTER = {
     "graphhopper": Graphhopper,
     "here": HereMaps,
     "heremaps": HereMaps,
+    "ign": IGN,
     "mapbox_osrm": MapboxOSRM,
     "mapbox-osrm": MapboxOSRM,
     "mapbox": MapboxOSRM,

@@ -59,7 +59,7 @@ class Isochrone(object):
 
     def __init__(self, geometry=None, interval=None, center=None, interval_type=None):
         self._geometry = geometry
-        self._interval = int(interval)
+        self._interval = None if interval is None else int(interval)
         self._center = center
         self._interval_type = interval_type
 

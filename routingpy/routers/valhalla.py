@@ -217,7 +217,7 @@ class Valhalla:
     ):
         """
         Builds and returns the router's route parameters. It's a separate function so that
-        bindings can use routingpy's functionality. See documentation of .matrix().
+        bindings can use routingpy's functionality. See documentation of .directions().
         """
         params = dict(costing=profile, narrative=instructions)
 
@@ -513,7 +513,7 @@ class Valhalla:
         :param locations: Multiple pairs of lng/lat values.
 
         :param profile: Specifies the mode of transport to use when calculating
-            matrices. One of ["auto", "bicycle", "multimodal", "pedestrian".
+            matrices. One of ["auto", "bicycle", "multimodal", "pedestrian"].
 
         :param sources: A list of indices that refer to the list of locations
             (starting with 0). If not passed, all indices are considered.
