@@ -41,10 +41,6 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dynamic = ["dependencies", "requires-python"]
-dependencies = [
-    "poetry>=2.2.1",
-    "responses>=0.25.8",
-]
 
 [project.urls]
 homepage = "https://github.com/mthh/routingpy"
