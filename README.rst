@@ -24,7 +24,7 @@ routingpy
 > **Project Update (June 2025):** *A new maintainer has taken over the project as of June 16, 2025.*
 *Over the coming weeks, I'll be reviewing the codebase, triaging issues and pull requests,*
 *and identifying areas that may need updating.*
-*A new release is targeted for early September 2025. Stay tuned for updates!*
+*A new release is targeted for November 2025. Stay tuned for updates!*
 
 *One lib to route them all* - **routingpy** is a Python 3 client for several
 popular routing webservices.
@@ -49,7 +49,7 @@ in our documentation_.
 
 **routingpy** is tested against:
 
-- CPython versions 3.9, 3.10, 3.11, 3.12 and 3.13,
+- CPython versions 3.9, 3.10, 3.11, 3.12, 3.13 and 3.14,
 - PyPy3 versions 3.9 and 3.10.
 
 © routingpy contributors 2022 under the `Apache 2.0 License`_.
