@@ -63,6 +63,14 @@ HereMaps
 
    .. automethod:: __init__
 
+IGN
+---
+
+.. autoclass:: routingpy.routers.IGN
+   :members:
+
+   .. automethod:: __init__
+
 MapboxOSRM
 ----------
 
