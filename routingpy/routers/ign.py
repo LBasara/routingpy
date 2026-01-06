@@ -357,11 +357,12 @@ class IGN:
     ):
         # Validate and format inputs
         if convert.is_list(intervals) and len(intervals) != 0:
-            warnings.warn(
-                "Only the first value of the intervals list/tuple "
-                "is used by the IGN isochrone service.",
-                UserWarning,
-            )
+            if len(intervals) > 1:
+                warnings.warn(
+                    "Only the first value of the intervals list/tuple "
+                    "is used by the IGN isochrone service.",
+                    UserWarning,
+                )
             intervals = intervals[0]
 
         if not isinstance(intervals, int):
