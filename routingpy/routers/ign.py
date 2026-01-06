@@ -110,7 +110,7 @@ class IGN:
             resource "bdtopo-osrm" also supports "exceptionnal".
 
         :param resource: The routing resource to use. Should be one of
-            "bdtopo-osrm", "bdtopo-pgr", "bdtopo-valhalla", "pgr_sgl_r100_all"
+            "bdtopo-osrm", "bdtopo-pgr", "bdtopo-valhalla"
 
         :param optimization: Optimization mode used to compute the route
             "fastest" (default) or "shortest".
@@ -299,7 +299,7 @@ class IGN:
         :param profile: see distance method for details. Default "car".
         :type profile: str
 
-        :param resource: one of "bdtopo-valhalla" (default), "pgr_sgl_r100_all", "bdtopo-pgr".
+        :param resource: one of "bdtopo-valhalla" (default), "bdtopo-pgr".
             Note: "bdtopo-osrm" does not support isochrones.
 
         :param direction: Directionality of the calculation. Should be "departure" (defaults,
