@@ -16,6 +16,7 @@
 #
 
 import json
+import warnings
 from typing import List, Optional, Tuple, Union  # noqa: F401
 
 from .. import convert, utils
@@ -278,19 +279,22 @@ class IGN:
         dry_run: Optional[bool] = None,
     ):
         """
-        Get isochrones (or equidistants) around a location using the IGN Geoportail isochrone service,
+        Get isochrone (or equidistant) around a location using the IGN Geoportail isochrone service,
         see https://www.geoportail.gouv.fr/depot/swagger/itineraire.html#/Utilisation/isochrone
 
         This method calls the IGN "isochrone" operation of the itineraire API and returns polygonal
-        contours for the requested ranges. Consult the service's GetCapabilities for valid values
+        contour for the requested interval. Consult the service's GetCapabilities for valid values
         for `resource`, `profile`, and other provider-specific options.
 
         :param locations: One pair of lng/lat values, expressed in the resource CRS.
         :type locations: [float, float]
 
-        :param intervals: Integer range for which to compute isochrones/equidistants. Value represents
+        :param intervals: Integer range for which to compute isochrone/equidistant. Value represents
             seconds when ``interval_type`` is "time", or meters when ``interval_type`` is "distance".
-        :type intervals: list of int
+            Note that only one contour can be calculated by the API. For compatibility reasons, it
+            is possible to pass this value in a list or tuple, or as a single integer.
+            If multiple values are passed, only the first one will be used.
+        :type intervals: int
 
         :param interval_type: Type of the provided ranges: "time" for isochrones (default) or "distance"
             for equidistants.
@@ -353,6 +357,11 @@ class IGN:
     ):
         # Validate and format inputs
         if convert.is_list(intervals) and len(intervals) != 0:
+            warnings.warn(
+                "Only the first value of the intervals list/tuple "
+                "is used by the IGN isochrone service.",
+                UserWarning,
+            )
             intervals = intervals[0]
 
         if not isinstance(intervals, int):
