@@ -27,6 +27,7 @@ from routingpy.direction import Direction, Directions
 from routingpy.expansion import Expansions
 from routingpy.isochrone import Isochrone, Isochrones
 from routingpy.matrix import Matrix
+from routingpy.optimized import OptimizedDirection
 from routingpy.raster import Raster
 from routingpy.valhalla_attributes import (
     MatchedEdge,
@@ -66,6 +67,28 @@ class ValhallaTest(_test.TestCase):
         self.assertEqual(routes.distance, int(150.44 * 1000))
         # Server response is 25 + 35 = 57seconds.
         self.assertEqual(routes.duration, 57)
+        self.assertIsInstance(routes.geometry, list)
+        self.assertIsInstance(routes.raw, dict)
+
+    @responses.activate
+    def test_full_optimized_directions(self):
+        query = ENDPOINTS_QUERIES[self.name]["optimized_route"]
+        expected = ENDPOINTS_EXPECTED[self.name]["optimized_route"]
+
+        responses.add(
+            responses.POST,
+            "https://api.mapbox.com/valhalla/v1/optimized_route",
+            status=200,
+            json=ENDPOINTS_RESPONSES[self.name]["optimized_route"],
+            content_type="application/json",
+        )
+        routes = self.client.optimized_directions(**query)
+
+        self.assertEqual(1, len(responses.calls))
+        self.assertEqual(json.loads(responses.calls[0].request.body.decode("utf-8")), expected)
+        self.assertIsInstance(routes, OptimizedDirection)
+        self.assertEqual(routes.distance, 21476)
+        self.assertEqual(routes.duration, 11663)
         self.assertIsInstance(routes.geometry, list)
         self.assertIsInstance(routes.raw, dict)
 

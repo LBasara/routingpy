@@ -18,7 +18,6 @@ from ..client_base import options  # noqa: F401
 from ..exceptions import RouterNotFound
 from .google import Google
 from .graphhopper import Graphhopper
-from .heremaps import HereMaps
 from .ign import IGN
 from .mapbox_osrm import MapboxOSRM
 from .openrouteservice import ORS
@@ -30,8 +29,6 @@ from .valhalla import Valhalla
 _SERVICE_TO_ROUTER = {
     "google": Google,
     "graphhopper": Graphhopper,
-    "here": HereMaps,
-    "heremaps": HereMaps,
     "ign": IGN,
     "mapbox_osrm": MapboxOSRM,
     "mapbox-osrm": MapboxOSRM,
@@ -64,7 +61,7 @@ def get_router_by_name(router_name):
     :param router_name: Name of the router as string.
     :type router_name: str
 
-    :rtype: Union[:class:`routingpy.routers.google.Google`, :class:`routingpy.routers.graphhopper.Graphhopper`, :class:`routingpy.routers.heremaps.HereMaps`, :class:`routingpy.routers.mapbox_osrm.MapBoxOSRM`, :class:`routingpy.routers.openrouteservice.ORS`, :class:`routingpy.routers.osrm.OSRM`, :class:`routingpy.routers.otp_v2.OpenTripPlannerV2`, :class:`routingpy.routers.valhalla.Valhalla`]
+    :rtype: Union[:class:`routingpy.routers.google.Google`, :class:`routingpy.routers.graphhopper.Graphhopper`, :class:`routingpy.routers.ign.IGN`, :class:`routingpy.routers.mapbox_osrm.MapBoxOSRM`, :class:`routingpy.routers.openrouteservice.ORS`, :class:`routingpy.routers.osrm.OSRM`, :class:`routingpy.routers.otp_v2.OpenTripPlannerV2`, :class:`routingpy.routers.valhalla.Valhalla`]
 
     """
     try:
